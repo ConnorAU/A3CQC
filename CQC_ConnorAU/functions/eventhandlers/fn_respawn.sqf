@@ -25,6 +25,15 @@ _unit switchCamera (missionNamespace getVariable ["CQC_cameraView","INTERNAL"]);
 
 if (!isNil "CQC_loadout") then {
 	_unit setUnitLoadout CQC_loadout;
+
+	if (!isNil "CQC_fireMode") then {
+		private _weapon = currentWeapon _unit;
+		private _ammo = _unit ammo _weapon;
+		_unit setAmmo [_weapon, 0];
+		_unit forceWeaponFire [_weapon,CQC_fireMode];
+		_unit setAmmo [_weapon,_ammo];
+	};
+
 	if (missionNamespace getVariable ["CQC_hideBackpack",false]) then {
 		(unitBackpack player) setObjectTextureGlobal [0,""];
 	};

@@ -12,3 +12,4 @@
 ] call CQC_fnc_discord;
 
 CQC_cameraView = cameraView;
+CQC_fireMode = weaponState player # 2;
