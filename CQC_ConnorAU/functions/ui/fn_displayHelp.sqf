@@ -11,7 +11,7 @@ private _colorLink = [
 	"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])",
 	"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",
 	1
-] call BIS_fnc_colorConfigToRGBA call BIS_fnc_colorRGBAtoHTML;
+] apply {_x call BIS_fnc_parseNumber} call BIS_fnc_colorRGBAtoHTML;
 
 [
 	[
