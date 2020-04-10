@@ -26,7 +26,7 @@ if (player inArea "safezone") then {
 				_draw set [6,"Loadout Editor"];
 			} else {
 				_draw set [2,(_x modelToWorldVisual (_x selectionPosition "head")) vectorAdd [0,0,0.5]];
-				_draw set [6,name _x];
+				_draw set [6,_x getVariable ["CQC_unitName",["","Spawn Selection"] select (_x isEqualTo CQC_spawnSelectNPC)]];
 			};
 			_draw set [8,linearConversion[5,10,player distance _x,0.04,0.025,true]];
 			drawIcon3D _draw;

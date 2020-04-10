@@ -20,6 +20,7 @@ createDialog "CQCDisplaySpawns";
 
 _unit enableStamina false;
 _unit setCustomAimCoef 0;
+_unit setVariable ["CQC_unitName",name _unit,true];
 
 if (!isNil "CQC_loadout") then {
 	_unit setUnitLoadout CQC_loadout;

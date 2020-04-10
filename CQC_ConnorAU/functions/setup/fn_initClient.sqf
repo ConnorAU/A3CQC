@@ -33,6 +33,7 @@ enableSaving [false, false];
 
 	player enableStamina false;
 	player setCustomAimCoef 0;
+	player setVariable ["CQC_unitName",name player,true];
 
 	["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
