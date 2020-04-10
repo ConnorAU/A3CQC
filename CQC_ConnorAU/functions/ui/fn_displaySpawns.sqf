@@ -19,11 +19,15 @@ switch _mode do {
 
 		_title ctrlSetText "Spawn Selection";
 
+		private _lastSpawnLoc = missionNamespace getVariable ["CQC_lastSpawnLoc",""];
 		lbClear _list;
 		{
 			private _displayName = _x splitstring "_" joinstring " ";
-			_list lbAdd _displayName;
+			private _index = _list lbAdd _displayName;
 			_list lbSetData [_foreachindex,_x];
+			if (_x == _lastSpawnLoc) then {
+				_list lbSetCurSel _index;
+			};
 
 			preloadCamera (getMarkerPos(_x + "__combat_zone"));
 		} foreach [
@@ -127,6 +131,7 @@ switch _mode do {
 				["UpdateState","Location: " + _locationName]
 			] call CQC_fnc_discord;
 			CQC_spawnSuccess = true;
+			CQC_lastSpawnLoc = _location;
 			_display closeDisplay 2;
 		} else {
 			hint "No safe spawn point could be found.";
